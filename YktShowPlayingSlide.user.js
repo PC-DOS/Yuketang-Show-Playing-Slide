@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         雨课堂网页版显示播放中的PPT
 // @namespace    http://pc-dos.scp-eq.org/
-// @version      0.1
+// @version      0.2
 // @description  雨课堂网页版显示播放中的PPT
 // @author       PC-DOS
 // @include      https://www.yuketang.cn/lesson/fullscreen/v3/*
@@ -29,6 +29,15 @@ function MainFunction(){
     //显示PPT容器
     for (var i=0; i<arrPPTContainer.length; i++){
         arrPPTContainer[i].style.display="block";
+    }
+
+    //扫描遮罩
+    var arrPPTOverlay = document.getElementsByClassName("ppt__modal box-center");
+    console.log("YktShowPlayingSlide: %d slide overlay(s) found.", arrPPTOverlay.length);
+
+    //移除遮罩
+    for (i=0; i<arrPPTOverlay.length; i++){
+        arrPPTOverlay[i].outerHTML="";
     }
 
     //注册循环执行
